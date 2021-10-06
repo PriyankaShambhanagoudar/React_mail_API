@@ -11,6 +11,19 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+
+  //useEffect summary
+  /* useEffect will run one time  and  bases on  dependencies cleanup function will run  (it will clear the useeffect)
+  */
+  useEffect(()=>{
+    console.log('Effect runing');
+
+    return()=>{
+      console.log('Clean Up function ');
+    }
+
+  }, [enteredPassword])
+
   useEffect(() => {
     const identifier = setTimeout(() => {
       console.log("checking form validity!");
@@ -19,6 +32,7 @@ const Login = (props) => {
       );
     }, 500);
 
+    //clean up function 
     return () => {
       console.log('Cleanup');
       clearTimeout(identifier);
