@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState, useEffect, useReducer , useContext} from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
+import AuthContext from "../../Store/auth-context";
 
 //////////////////////////////////////////////////
 //email
@@ -47,6 +48,8 @@ const Login = (props) => {
     value: "",
     isValid: null,
   });
+
+  const authCtx= useContext(AuthContext);
 
   //useEffect summary
   /* useEffect will run one time  and  bases on  dependencies cleanup function will run  (it will clear the useeffect)
@@ -112,7 +115,7 @@ const { isValid : passwordIsValid  } = passwordState;
   const submitHandler = (event) => {
     event.preventDefault();
    // props.onLogin(emailState.value, enteredPassword);
-    props.onLogin(emailState.value, passwordState.value); //pwd
+    authCtx.onLogin(emailState.value, passwordState.value); //pwd
 
   };
 
