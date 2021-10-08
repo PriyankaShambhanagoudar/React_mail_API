@@ -10,7 +10,7 @@ const Home = (props) => {
       <h1>Welcome back!</h1>
       <Button onClick={props.onLogout}>Logout</Button>
     </Card>
-  );
+      );
 };
 
 export default Home; 
